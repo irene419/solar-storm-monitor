@@ -5,6 +5,7 @@ import KpIndexPage from "./pages/KpIndexPage";
 import CmeEventsPage from "./pages/CmeEventsPage";
 import SunspotActivityPage from "./pages/SunspotActivityPage";
 import PlaceholderPage from "./pages/PlaceholderPage";
+import LearnPage from "./pages/LearnPage";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <Route path="/sunspot-activity" element={<SunspotActivityPage />} />
         <Route path="/solar-activity" element={<PlaceholderPage title="Solar Activity" />} />
         <Route path="/alerts" element={<PlaceholderPage title="Alerts" />} />
-        <Route path="/about" element={<PlaceholderPage title="About" />} />
+        <Route path="/learn" element={<LearnPage />} />
       </Routes>
     </DashboardLayout>
   );
