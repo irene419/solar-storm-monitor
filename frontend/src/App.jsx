@@ -27,13 +27,13 @@ function App() {
           label="Recent CME Events"
           value={cmeStatus === "loading" ? "…" : cmeStatus === "error" ? "N/A" : cmeData.length}
           unit="events"
-          description={cmeStatus === "error" ? "Data currently unavailable" : "Last 7 days"}
+          description={cmeStatus === "error" ? "Rate limited (DEMO_KEY) — try again later" : "Last 7 days"}
         />
         <SummaryCard
           label="Sunspot Number"
           value={sunspotStatus === "loading" ? "…" : sunspotStatus === "error" ? "N/A" : sunspotData}
           unit=""
-          description={sunspotStatus === "error" ? "Data currently unavailable" : "Latest observation"}
+          description={sunspotStatus === "error" ? "Requires backend proxy (CORS)" : "Latest observation"}
         />
         <SummaryCard label="Data Status" value="Live" unit="" description="All sources reachable" />
       </div>
