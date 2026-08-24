@@ -2,11 +2,12 @@ import DashboardLayout from "./components/layout/DashboardLayout";
 import SummaryCard from "./components/SummaryCard";
 import { useKpIndex } from "./hooks/useKpIndex";
 import { useCmeEvents } from "./hooks/useCmeEvents";
-
+import { useSunspotNumber } from "./hooks/useSunspotNumber";
 
 function App() {
   const { data: kpData, status: kpStatus } = useKpIndex();
   const { data: cmeData, status: cmeStatus } = useCmeEvents();
+  const { data: sunspotData, status: sunspotStatus } = useSunspotNumber();
 
   const latestKp = kpData && kpData.length > 0 ? kpData[kpData.length - 1].Kp : null;
 
@@ -17,16 +18,23 @@ function App() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <SummaryCard
-          label="Recent CME Events"
-          value={
-            cmeStatus === "loading" ? "…" : cmeStatus === "error" ? "N/A" : cmeData.length
-          }
-          unit="events"
-          description={
-            cmeStatus === "error" ? "Data currently unavailable" : "Last 7 days"
-          }
+          label="Kp Index"
+          value={kpStatus === "loading" ? "…" : kpStatus === "error" ? "N/A" : latestKp}
+          unit=""
+          description={kpStatus === "error" ? "Data currently unavailable" : "Geomagnetic activity level"}
         />
-        <SummaryCard label="Sunspot Number" value="96.7" unit="" description="Latest observation" />
+        <SummaryCard
+          label="Recent CME Events"
+          value={cmeStatus === "loading" ? "…" : cmeStatus === "error" ? "N/A" : cmeData.length}
+          unit="events"
+          description={cmeStatus === "error" ? "Data currently unavailable" : "Last 7 days"}
+        />
+        <SummaryCard
+          label="Sunspot Number"
+          value={sunspotStatus === "loading" ? "…" : sunspotStatus === "error" ? "N/A" : sunspotData}
+          unit=""
+          description={sunspotStatus === "error" ? "Data currently unavailable" : "Latest observation"}
+        />
         <SummaryCard label="Data Status" value="Live" unit="" description="All sources reachable" />
       </div>
     </DashboardLayout>
