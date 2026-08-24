@@ -1,9 +1,12 @@
 import DashboardLayout from "./components/layout/DashboardLayout";
 import SummaryCard from "./components/SummaryCard";
 import { useKpIndex } from "./hooks/useKpIndex";
+import { useCmeEvents } from "./hooks/useCmeEvents";
+
 
 function App() {
   const { data: kpData, status: kpStatus } = useKpIndex();
+  const { data: cmeData, status: cmeStatus } = useCmeEvents();
 
   const latestKp = kpData && kpData.length > 0 ? kpData[kpData.length - 1].Kp : null;
 
@@ -14,16 +17,15 @@ function App() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <SummaryCard
-          label="Kp Index"
+          label="Recent CME Events"
           value={
-            kpStatus === "loading" ? "…" : kpStatus === "error" ? "N/A" : latestKp
+            cmeStatus === "loading" ? "…" : cmeStatus === "error" ? "N/A" : cmeData.length
           }
-          unit=""
+          unit="events"
           description={
-            kpStatus === "error" ? "Data currently unavailable" : "Geomagnetic activity level"
+            cmeStatus === "error" ? "Data currently unavailable" : "Last 7 days"
           }
         />
-        <SummaryCard label="Recent CME Events" value="2" unit="events" description="Last 24 hours" />
         <SummaryCard label="Sunspot Number" value="96.7" unit="" description="Latest observation" />
         <SummaryCard label="Data Status" value="Live" unit="" description="All sources reachable" />
       </div>
