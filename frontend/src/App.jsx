@@ -6,6 +6,8 @@ import CmeEventsPage from "./pages/CmeEventsPage";
 import SunspotActivityPage from "./pages/SunspotActivityPage";
 import PlaceholderPage from "./pages/PlaceholderPage";
 import LearnPage from "./pages/LearnPage";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/solar-activity" element={<PlaceholderPage title="Solar Activity" />} />
         <Route path="/alerts" element={<PlaceholderPage title="Alerts" />} />
         <Route path="/learn" element={<LearnPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
       </Routes>
     </DashboardLayout>
   );

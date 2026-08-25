@@ -8,7 +8,8 @@ export default function Sidebar() {
     { label: "Sunspot Activity", path: "/sunspot-activity" },
     { label: "Solar Activity", path: "/solar-activity" },
     { label: "Alerts", path: "/alerts" },
-    { label: "About", path: "/learn" },
+    { label: "Learn", path: "/learn" },
+    { label: "Log In", path: "/login" },
   ];
 
   return (
