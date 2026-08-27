@@ -4,6 +4,8 @@ from flask_jwt_extended import JWTManager
 from config import Config
 from models import db, bcrypt
 from routes.auth import auth_bp
+from routes.alert_rules import alert_rules_bp
+from routes.sightings import sightings_bp
 
 def create_app():
     app = Flask(__name__)
@@ -15,6 +17,8 @@ def create_app():
     CORS(app)
 
     app.register_blueprint(auth_bp, url_prefix="/api")
+    app.register_blueprint(alert_rules_bp, url_prefix="/api")
+    app.register_blueprint(sightings_bp, url_prefix="/api")
 
     @app.errorhandler(404)
     def not_found(e):
@@ -30,3 +34,4 @@ app = create_app()
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
+    
