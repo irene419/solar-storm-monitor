@@ -3,6 +3,7 @@ from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from config import Config
 from models import db, bcrypt
+from routes.auth import auth_bp
 
 def create_app():
     app = Flask(__name__)
@@ -12,6 +13,8 @@ def create_app():
     bcrypt.init_app(app)
     JWTManager(app)
     CORS(app)
+
+    app.register_blueprint(auth_bp, url_prefix="/api")
 
     @app.errorhandler(404)
     def not_found(e):
