@@ -1,13 +1,27 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { apiRequest } from "../api";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log("Login submitted:", { email, password });
-    // Backend connection will be added in Phase 2
+    setError("");
+    try {
+      const data = await apiRequest("/login", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+      });
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("userEmail", data.user.email);
+      navigate("/");
+    } catch (err) {
+      setError(err.message);
+    }
   }
 
   return (
@@ -16,6 +30,8 @@ export default function LoginPage() {
       <p className="text-slate-500 text-sm mb-6">Access your saved alerts and sightings.</p>
 
       <form onSubmit={handleSubmit} className="bg-white rounded-lg border border-slate-200 p-6 shadow-sm">
+        {error && <p className="text-sm text-red-600 mb-4">{error}</p>}
+
         <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>
         <input
           type="email"
