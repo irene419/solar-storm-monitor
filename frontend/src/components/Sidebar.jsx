@@ -22,16 +22,8 @@ export default function Sidebar() {
   return (
     <aside className="w-64 h-screen bg-slate-900 text-slate-100 flex flex-col p-4 fixed left-0 top-0">
       <div className="flex items-center gap-2 px-2 mb-4">
-        <svg width="24" height="24" viewBox="0 0 32 32">
-          <defs>
-            <radialGradient id="sunGradient" cx="40%" cy="40%" r="60%">
-              <stop offset="0%" stopColor="#fef3c7" />
-              <stop offset="60%" stopColor="#f59e0b" />
-              <stop offset="100%" stopColor="#ea580c" />
-            </radialGradient>
-          </defs>
-          <circle cx="14" cy="16" r="9" fill="url(#sunGradient)" />
-          <path d="M21 12 L29 6 L25 14 L30 15 L22 21 Z" fill="#fbbf24" opacity="0.9" />
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+          <path d="M13 2 L4 14 L11 14 L10 22 L20 9 L12 9 Z" />
         </svg>
         <h1 className="text-xl font-bold">Solar Storm Monitor</h1>
       </div>

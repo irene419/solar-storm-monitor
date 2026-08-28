@@ -8,6 +8,8 @@ export default function MySightingsPage() {
   const [note, setNote] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+  const [editingId, setEditingId] = useState(null);
+  const [editNote, setEditNote] = useState("");
 
   async function loadSightings() {
     try {
@@ -50,10 +52,28 @@ export default function MySightingsPage() {
     }
   }
 
+  function startEdit(sighting) {
+    setEditingId(sighting.id);
+    setEditNote(sighting.note || "");
+  }
+
+  async function handleSaveEdit(id) {
+    try {
+      await apiRequest(`/sightings/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ note: editNote }),
+      });
+      setEditingId(null);
+      loadSightings();
+    } catch (err) {
+      setError(err.message);
+    }
+  }
+
   return (
     <>
       <h1 className="text-3xl font-bold text-slate-800">My Sightings</h1>
-      <p className="text-slate-500 mt-2">Log your aurora sightings and build your own history.</p>
+      <p className="text-slate-500 mt-2">Save the auroras you’ve seen and keep track of your sightings.</p>
       <div className="border-b border-slate-200 my-6"></div>
 
       {error && <p className="text-sm text-red-600 mb-4">{error}</p>}
@@ -86,13 +106,41 @@ export default function MySightingsPage() {
         ) : (
           sightings.map((s) => (
             <div key={s.id} className="flex justify-between items-start p-4 border-b border-slate-100 last:border-0">
-              <div>
+              <div className="flex-1">
                 <p className="text-sm font-medium text-slate-700">{s.location} — {s.date}</p>
-                {s.note && <p className="text-xs text-slate-500 mt-1">{s.note}</p>}
+                {editingId === s.id ? (
+                  <textarea
+                    value={editNote}
+                    onChange={(e) => setEditNote(e.target.value)}
+                    className="border border-slate-300 rounded-md px-2 py-1 text-xs w-full mt-1"
+                    rows="2"
+                  />
+                ) : (
+                  s.note && <p className="text-xs text-slate-500 mt-1">{s.note}</p>
+                )}
               </div>
-              <button onClick={() => handleDelete(s.id)} className="text-sm text-red-600 hover:text-red-800">
-                Delete
-              </button>
+
+              <div className="flex gap-3 ml-3">
+                {editingId === s.id ? (
+                  <>
+                    <button onClick={() => handleSaveEdit(s.id)} className="text-sm text-green-700 hover:text-green-900">
+                      Save
+                    </button>
+                    <button onClick={() => setEditingId(null)} className="text-sm text-slate-500 hover:text-slate-700">
+                      Cancel
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button onClick={() => startEdit(s)} className="text-sm text-slate-600 hover:text-slate-900">
+                      Edit
+                    </button>
+                    <button onClick={() => handleDelete(s.id)} className="text-sm text-red-600 hover:text-red-800">
+                      Delete
+                    </button>
+                  </>
+                )}
+              </div>
             </div>
           ))
         )}

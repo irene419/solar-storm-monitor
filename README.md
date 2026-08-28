@@ -1,7 +1,7 @@
-# 🌞 Space Storm Monitor
+# 🌞 Solar Storm Monitor
 
 **The Sun is the biggest threat to our evolving technology.**  
-To people on the surface, space weather is harmless. But for satellites, power grids, and global communications, a solar storm can be catastrophic. That's why we built a real‑time solar activity monitoring dashboard — to track geomagnetic storms, aurora visibility, and the impacts on Earth's technology, all in one place.
+To people on the surface, space weather is harmless. But for satellites, power grids, and global communications, a solar storm can be catastrophic. That's why we built a real‑time solar activity monitoring dashboard to track geomagnetic storms, aurora visibility, and the impacts on Earth's technology, all in one place.
 
 Built with React, Tailwind CSS, and live data from NOAA/SWPC, with a full‑featured backend for user accounts, saved alerts, and personal aurora sighting logs.
 

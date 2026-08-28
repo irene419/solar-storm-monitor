@@ -7,6 +7,8 @@ export default function MyAlertsPage() {
   const [threshold, setThreshold] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+  const [editingId, setEditingId] = useState(null);
+  const [editValue, setEditValue] = useState("");
 
   async function loadAlerts() {
     try {
@@ -47,10 +49,28 @@ export default function MyAlertsPage() {
     }
   }
 
+  function startEdit(alert) {
+    setEditingId(alert.id);
+    setEditValue(alert.threshold_value);
+  }
+
+  async function handleSaveEdit(id) {
+    try {
+      await apiRequest(`/alert-rules/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ threshold_value: parseFloat(editValue) }),
+      });
+      setEditingId(null);
+      loadAlerts();
+    } catch (err) {
+      setError(err.message);
+    }
+  }
+
   return (
     <>
       <h1 className="text-3xl font-bold text-slate-800">My Alerts</h1>
-      <p className="text-slate-500 mt-2">Set custom thresholds you want to be notified about.</p>
+      <p className="text-slate-500 mt-2">Get an alert when Kp reaches your set level.</p>
       <div className="border-b border-slate-200 my-6"></div>
 
       {error && <p className="text-sm text-red-600 mb-4">{error}</p>}
@@ -87,12 +107,44 @@ export default function MyAlertsPage() {
         ) : (
           alerts.map((alert) => (
             <div key={alert.id} className="flex justify-between items-center p-4 border-b border-slate-100 last:border-0">
-              <span className="text-sm text-slate-700">
-                Notify me when <strong>{alert.metric}</strong> crosses <strong>{alert.threshold_value}</strong>
-              </span>
-              <button onClick={() => handleDelete(alert.id)} className="text-sm text-red-600 hover:text-red-800">
-                Delete
-              </button>
+              {editingId === alert.id ? (
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-slate-700">Notify me when <strong>{alert.metric}</strong> crosses</span>
+                  <input
+                    type="number"
+                    step="0.1"
+                    value={editValue}
+                    onChange={(e) => setEditValue(e.target.value)}
+                    className="border border-slate-300 rounded-md px-2 py-1 text-sm w-20"
+                  />
+                </div>
+              ) : (
+                <span className="text-sm text-slate-700">
+                  Notify me when <strong>{alert.metric}</strong> crosses <strong>{alert.threshold_value}</strong>
+                </span>
+              )}
+
+              <div className="flex gap-3">
+                {editingId === alert.id ? (
+                  <>
+                    <button onClick={() => handleSaveEdit(alert.id)} className="text-sm text-green-700 hover:text-green-900">
+                      Save
+                    </button>
+                    <button onClick={() => setEditingId(null)} className="text-sm text-slate-500 hover:text-slate-700">
+                      Cancel
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button onClick={() => startEdit(alert)} className="text-sm text-slate-600 hover:text-slate-900">
+                      Edit
+                    </button>
+                    <button onClick={() => handleDelete(alert.id)} className="text-sm text-red-600 hover:text-red-800">
+                      Delete
+                    </button>
+                  </>
+                )}
+              </div>
             </div>
           ))
         )}

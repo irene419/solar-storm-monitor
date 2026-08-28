@@ -12,9 +12,9 @@ export default function AuroraGuidePage() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold text-slate-800">Aurora Guide</h1>
+      <h1 className="text-3xl font-bold text-slate-800">Track the storm. Find the glow.</h1>
       <p className="text-slate-500 mt-2">
-        For aurora chasers and photographers — know when conditions are right.
+        For aurora chasers and photographers, know when conditions are right.
       </p>
       <div className="border-b border-slate-200 my-6"></div>
 
