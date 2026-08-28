@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://solar-storm-monitor-2c8c.vercel.app/api";
 
 export async function apiRequest(endpoint, options = {}) {
   const token = localStorage.getItem("token");
