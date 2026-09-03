@@ -3,7 +3,7 @@ const events = [
     date: "September 1859",
     title: "The Carrington Event",
     description:
-      "The strongest geomagnetic storm ever recorded. Telegraph systems worldwide sparked, shocked operators, and some offices caught fire — even after telegraph wires were disconnected from their power supplies.",
+      "The strongest geomagnetic storm ever recorded. Telegraph systems worldwide sparked, shocked operators, and some offices caught fire ,even after telegraph wires were disconnected from their power supplies.",
   },
   {
     date: "March 1989",
@@ -15,19 +15,19 @@ const events = [
     date: "October 2003",
     title: "Halloween Storms",
     description:
-      "A series of powerful storms disrupted satellites and GPS signals worldwide and caused a power outage in parts of Sweden — among the strongest storms of the modern satellite era.",
+      "A series of powerful storms disrupted satellites and GPS signals worldwide and caused a power outage in parts of Sweden,among the strongest storms of the modern satellite era.",
   },
   {
     date: "July 2012",
     title: "The Near-Miss Superstorm",
     description:
-      "One of the fastest CMEs ever recorded narrowly missed Earth by about a week. It struck NASA's STEREO-A spacecraft instead, giving scientists the only direct measurements ever taken from inside a storm of that intensity. Researchers estimate a direct hit would have rivaled the Carrington Event.",
+      "One of the fastest CMEs ever recorded narrowly missed Earth by about a week. It struck NASA's STEREO.A spacecraft instead, giving scientists the only direct measurements ever taken from inside a storm of that intensity. Researchers estimate a direct hit would have rivaled the Carrington Event.",
   },
   {
     date: "February 2022",
     title: "Starlink Satellite Loss",
     description:
-      "A moderate geomagnetic storm heated and expanded Earth's upper atmosphere, increasing drag on 49 newly launched SpaceX Starlink satellites. 38 of them lost altitude and burned up in the atmosphere — notable because it took only a moderate storm to cause this much loss.",
+      "A moderate geomagnetic storm heated and expanded Earth's upper atmosphere, increasing drag on 49 newly launched SpaceX Starlink satellites. 38 of them lost altitude and burned up in the atmosphere because it took only a moderate storm to cause this much loss.",
   },
 ];
 

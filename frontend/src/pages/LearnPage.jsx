@@ -12,7 +12,7 @@ const topics = [
     body: "If a powerful Earth-directed eruption happened today, one of the first things we'd detect would be the solar flare's electromagnetic radiation. X-rays travel at the speed of light and reach Earth in about 8 minutes. They can disturb the ionosphere and cause radio communication disruptions, particularly on the sunlit side of Earth.\n\nAfter that, extremely energetic particles can arrive in tens of minutes, creating a radiation storm that can be dangerous for astronauts and can damage or disrupt spacecraft electronics.\n\nThe CME itself arrives much later. Depending on its speed, it can take roughly 15 hours to several days, with many CMEs reaching Earth in around 1–3 days. When it arrives, it can compress and disturb Earth's magnetosphere, potentially producing a geomagnetic storm.",
   },
   {
-    title: "And That's When the Effects Can Spread",
+    title: "Effects",
     body: "A strong geomagnetic storm can produce spectacular auroras, but it can also interfere with satellites, GPS, radio communications, and electrical power systems. Rapid changes in Earth's magnetic field can induce currents in long conductors, including power-transmission networks, potentially placing stress on transformers and contributing to grid instability or outages.",
   },
 ];
