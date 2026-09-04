@@ -10,8 +10,7 @@ export default function KpActivityChart({ data }) {
 
   return (
     <div className="bg-white rounded-lg border border-slate-200 p-5 shadow-sm">
-      <h2 className="text-base font-semibold text-slate-800 mb-1">Kp Activity — Last 24 Hours</h2>
-      <p className="text-xs text-slate-500 mb-4">Is activity rising, falling, or holding steady?</p>
+      <h2 className="text-base font-semibold text-slate-800 mb-1">Kp Activity.Last 24 Hours</h2>
       <ResponsiveContainer width="100%" height={220}>
         <LineChart data={last24h}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />

@@ -40,11 +40,11 @@ export default function AuroraGuidePage() {
             from the poles the aurora becomes visible.
           </li>
           <li>
-            <span className="font-medium text-slate-700">Your latitude</span> — The further north (or
+            <span className="font-medium text-slate-700">Your latitude</span> The further north (or
             south) you are, the lower the Kp needed to see aurora where you live.
           </li>
           <li>
-            <span className="font-medium text-slate-700">Darkness and clear skies</span> — You'll still
+            <span className="font-medium text-slate-700">Darkness and clear skies</span> You'll still
             need a dark, cloud-free night regardless of Kp Index.
           </li>
         </ul>
