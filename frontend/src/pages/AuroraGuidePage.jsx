@@ -36,15 +36,15 @@ export default function AuroraGuidePage() {
         <h2 className="text-base font-semibold text-slate-800 mb-2">What Determines Visibility</h2>
         <ul className="text-sm text-slate-600 leading-relaxed space-y-1.5">
           <li>
-            <span className="font-medium text-slate-700">Kp Index</span> — the higher it is, the further
+            <span className="font-medium text-slate-700">Kp Index</span> The higher it is, the further
             from the poles the aurora becomes visible.
           </li>
           <li>
-            <span className="font-medium text-slate-700">Your latitude</span> — the further north (or
+            <span className="font-medium text-slate-700">Your latitude</span> — The further north (or
             south) you are, the lower the Kp needed to see aurora where you live.
           </li>
           <li>
-            <span className="font-medium text-slate-700">Darkness and clear skies</span> — you'll still
+            <span className="font-medium text-slate-700">Darkness and clear skies</span> — You'll still
             need a dark, cloud-free night regardless of Kp Index.
           </li>
         </ul>
